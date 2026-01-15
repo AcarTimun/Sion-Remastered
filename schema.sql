@@ -59,26 +59,26 @@ CREATE TABLE kelas (
     FOREIGN KEY (dosen_id) REFERENCES dosen(dosen_id) ON DELETE CASCADE
 );
 
--- 6. TABEL TAGIHAN (Keuangan)
+-- 6. TABEL TAGIHAN (FIXED)
 CREATE TABLE tagihan (
     tagihan_id INT AUTO_INCREMENT PRIMARY KEY,
     mahasiswa_id INT NOT NULL,
-    judul_tagihan VARCHAR(100) NOT NULL, -- Contoh: "UKT Semester 3"
+    judul_tagihan VARCHAR(100) NOT NULL, 
     total_tagihan DECIMAL(10, 2) NOT NULL,
     sisa_tagihan DECIMAL(10, 2) NOT NULL,
     status ENUM('Lunas', 'Belum Lunas') DEFAULT 'Belum Lunas',
-    tanggal_terbit DATE DEFAULT CURRENT_DATE,
+    tanggal_terbit DATETIME DEFAULT CURRENT_TIMESTAMP, 
     jatuh_tempo DATE NOT NULL,
     FOREIGN KEY (mahasiswa_id) REFERENCES mahasiswa(mahasiswa_id) ON DELETE CASCADE
 );
 
--- 7. TABEL PEMBAYARAN
+-- 7. TABEL PEMBAYARAN (FIXED)
 CREATE TABLE pembayaran (
     pembayaran_id INT AUTO_INCREMENT PRIMARY KEY,
     tagihan_id INT NOT NULL,
     jumlah_bayar DECIMAL(10, 2) NOT NULL,
-    tanggal_bayar DATE DEFAULT CURRENT_DATE,
-    bukti_pembayaran VARCHAR(255) NULL, -- Nama file gambar
+    tanggal_bayar DATETIME DEFAULT CURRENT_TIMESTAMP, 
+    bukti_pembayaran VARCHAR(255) NULL, 
     status_validasi ENUM('Pending', 'Valid', 'Tolak') DEFAULT 'Pending',
     FOREIGN KEY (tagihan_id) REFERENCES tagihan(tagihan_id) ON DELETE CASCADE
 );
@@ -114,3 +114,6 @@ CREATE TABLE absensi (
     FOREIGN KEY (pertemuan_id) REFERENCES pertemuan(pertemuan_id) ON DELETE CASCADE,
     FOREIGN KEY (mahasiswa_id) REFERENCES mahasiswa(mahasiswa_id) ON DELETE CASCADE
 );
+
+INSERT INTO users (username, password, role) 
+VALUES ('admin', '$2y$12$scIC2sHodeHp45fk7oVvF.QO2fi4pTC3GOlmYxF7IGEZozpV8WM3m', 'admin');
