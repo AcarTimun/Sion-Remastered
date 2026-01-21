@@ -1,17 +1,19 @@
 <?php
 
 class Database {
-    private $host = 'localhost';
-    private $user = 'root';
-    private $pass = ''; // Default XAMPP/Laragon biasanya kosong
-    private $db_name = 'sion_remastered';
+    // Kita gunakan konstanta dari Config.php
+    // Tidak perlu ditulis manual lagi di sini
+    private $host = DB_HOST;
+    private $user = DB_USER;
+    private $pass = DB_PASS;
+    private $db_name = DB_NAME;
 
     private $dbh; // Database Handler
     private $stmt; // Statement
 
     public function __construct()
     {
-        // Data Source Name
+        // Data Source Name (DSN)
         $dsn = 'mysql:host=' . $this->host . ';dbname=' . $this->db_name;
 
         $option = [
@@ -22,7 +24,7 @@ class Database {
         try {
             $this->dbh = new PDO($dsn, $this->user, $this->pass, $option);
         } catch(PDOException $e) {
-            // Jika error, hentikan program dan tampilkan pesan
+            // Jika error, hentikan program
             die("Koneksi Database Gagal: " . $e->getMessage());
         }
     }
@@ -34,7 +36,6 @@ class Database {
     }
 
     // Binding data (Mencegah SQL Injection)
-    // Contoh: WHERE id = :id
     public function bind($param, $value, $type = null)
     {
         if( is_null($type) ) {
@@ -62,21 +63,21 @@ class Database {
         $this->stmt->execute();
     }
 
-    // Ambil BANYAK data (Contoh: Daftar Mahasiswa)
+    // Ambil BANYAK data
     public function resultSet()
     {
         $this->execute();
         return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    // Ambil SATU data (Contoh: Detail Profil Budi)
+    // Ambil SATU data
     public function single()
     {
         $this->execute();
         return $this->stmt->fetch(PDO::FETCH_ASSOC);
     }
     
-    // Hitung berapa baris yang berubah (Untuk cek berhasil insert/update/delete)
+    // Hitung baris yang berubah
     public function rowCount()
     {
         return $this->stmt->rowCount();

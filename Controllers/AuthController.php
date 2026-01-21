@@ -30,27 +30,33 @@ class AuthController extends Controller {
         if ($user) {
             
             // 4. Cek Password (Verifikasi Hash)
-            // Kita pakai password_verify karena di database dummy tadi passwordnya ter-enkripsi
             if (password_verify($password, $user['password'])) {
                 
-                // 5. Simpan data user ke Session (Biar sistem tau siapa yang login)
+                // 5. Simpan data user ke Session
                 $_SESSION['user'] = [
                     'id' => $user['user_id'],
                     'username' => $user['username'],
                     'role' => $user['role']
                 ];
 
-                // 6. TAMPILKAN PESAN SUKSES
-                // (Kita echo manual dulu karena Dashboard belum dibuat)
-                echo '<div style="font-family: sans-serif; text-align: center; margin-top: 50px;">';
-                echo '<h1 style="color: green;">LOGIN BERHASIL! ✅</h1>';
-                echo '<p>Halo, <strong>' . $user['username'] . '</strong>.</p>';
-                echo '<p>Anda login sebagai: <span style="background: yellow; padding: 2px 5px;">' . $user['role'] . '</span></p>';
-                echo '<hr style="width: 200px;">';
-                echo '<p><small>Session tersimpan. Siap masuk ke Dashboard (Next Development).</small></p>';
-                echo '<a href="' . BASEURL . '/auth/logout" style="color: red; text-decoration: none;">[ Logout / Keluar ]</a>';
-                echo '</div>';
-                exit;
+                // 6. LOGIKA REDIRECT (PENGALIHAN HALAMAN)
+                // Cek Role user, lalu lempar ke halaman yang sesuai
+                if ($user['role'] == 'admin') {
+                    // Jika Admin -> Masuk ke Dashboard Admin
+                    header('Location: ' . BASEURL . '/admin');
+                    exit;
+                } else {
+                    // Jika Role lain (Dosen/Mahasiswa)
+                    // Karena dashboard mereka belum kita buat, kita tampilkan pesan dulu
+                    echo '<div style="font-family: sans-serif; text-align: center; margin-top: 50px;">';
+                    echo '<h1 style="color: blue;">Login Sukses! ✅</h1>';
+                    echo '<p>Halo, <strong>' . $user['username'] . '</strong>.</p>';
+                    echo '<p>Anda login sebagai: ' . $user['role'] . '</p>';
+                    echo '<p style="color: red;"><em>Maaf, Dashboard untuk role Anda sedang dalam tahap konstruksi.</em></p>';
+                    echo '<a href="' . BASEURL . '/auth/logout">Logout</a>';
+                    echo '</div>';
+                    exit;
+                }
 
             } else {
                 // Password Salah
