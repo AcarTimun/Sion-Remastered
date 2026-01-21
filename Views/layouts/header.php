@@ -15,21 +15,44 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm mb-4">
   <div class="container">
-    <a class="navbar-brand" href="<?= BASEURL; ?>/admin"><i class="fas fa-university me-2"></i>SION REMASTERED</a>
+    
+    <?php 
+        $homeLink = BASEURL;
+        if($_SESSION['user']['role'] == 'admin') $homeLink = BASEURL . '/admin';
+        elseif($_SESSION['user']['role'] == 'dosen') $homeLink = BASEURL . '/portaldosen';
+    ?>
+    <a class="navbar-brand" href="<?= $homeLink; ?>"><i class="fas fa-university me-2"></i>SION REMASTERED</a>
+    
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
       <span class="navbar-toggler-icon"></span>
     </button>
     
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto align-items-center">
-        <li class="nav-item me-3">
-            <span class="text-white small">Halo, <strong><?= $_SESSION['user']['username']; ?></strong> (Admin)</span>
+        
+        <?php if($_SESSION['user']['role'] == 'admin') : ?>
+            <li class="nav-item mx-2"><a class="nav-link text-white-50" href="<?= BASEURL; ?>/dosen">Dosen</a></li>
+            <li class="nav-item mx-2"><a class="nav-link text-white-50" href="<?= BASEURL; ?>/mahasiswa">Mahasiswa</a></li>
+            <li class="nav-item mx-2"><a class="nav-link text-white-50" href="<?= BASEURL; ?>/matkul">Matkul</a></li>
+        <?php endif; ?>
+
+        <?php if($_SESSION['user']['role'] == 'dosen') : ?>
+            <li class="nav-item mx-2"><a class="nav-link text-white-50" href="#">Jadwal Ajar</a></li>
+            <li class="nav-item mx-2"><a class="nav-link text-white-50" href="#">Perwalian</a></li>
+        <?php endif; ?>
+
+        <li class="nav-item ms-3">
+            <span class="text-white small me-2">
+                Halo, <strong><?= $_SESSION['user']['username']; ?></strong> 
+                (<?= ucfirst($_SESSION['user']['role']); ?>)
+            </span>
         </li>
         <li class="nav-item">
             <a class="btn btn-danger btn-sm rounded-pill px-3" href="<?= BASEURL; ?>/auth/logout">
-                <i class="fas fa-sign-out-alt me-1"></i> Logout
+                <i class="fas fa-sign-out-alt me-1"></i>
             </a>
         </li>
+
       </ul>
     </div>
   </div>

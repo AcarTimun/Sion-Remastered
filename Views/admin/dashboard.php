@@ -19,7 +19,7 @@
                 </div>
                 <h5 class="card-title text-primary fw-bold">Data Dosen</h5>
                 <p class="card-text text-muted small">Kelola data dosen pengajar & NIDN.</p>
-                <a href="#" class="btn btn-outline-primary btn-sm rounded-pill px-4 disabled">Kelola</a>
+                <a href="<?= BASEURL; ?>/dosen" class="btn btn-outline-primary btn-sm rounded-pill px-4">Kelola</a>
             </div>
         </div>
     </div>

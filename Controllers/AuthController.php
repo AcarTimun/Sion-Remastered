@@ -45,18 +45,17 @@ class AuthController extends Controller {
                     // Jika Admin -> Masuk ke Dashboard Admin
                     header('Location: ' . BASEURL . '/admin');
                     exit;
+                } elseif ($user['role'] == 'dosen') {
+                    // ARAH BARU: Masuk ke Portal Dosen
+                    header('Location: ' . BASEURL . '/portaldosen');
+                    exit;
                 } else {
-                    // Jika Role lain (Dosen/Mahasiswa)
-                    // Karena dashboard mereka belum kita buat, kita tampilkan pesan dulu
-                    echo '<div style="font-family: sans-serif; text-align: center; margin-top: 50px;">';
-                    echo '<h1 style="color: blue;">Login Sukses! ✅</h1>';
-                    echo '<p>Halo, <strong>' . $user['username'] . '</strong>.</p>';
-                    echo '<p>Anda login sebagai: ' . $user['role'] . '</p>';
-                    echo '<p style="color: red;"><em>Maaf, Dashboard untuk role Anda sedang dalam tahap konstruksi.</em></p>';
-                    echo '<a href="' . BASEURL . '/auth/logout">Logout</a>';
-                    echo '</div>';
+                    // Mahasiswa
+                    echo "Login Sukses! Dashboard Mahasiswa belum tersedia.";
                     exit;
                 }
+                
+                
 
             } else {
                 // Password Salah
