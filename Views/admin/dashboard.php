@@ -45,7 +45,7 @@
                 </div>
                 <h5 class="card-title text-warning fw-bold">Mata Kuliah</h5>
                 <p class="card-text text-muted small">Kelola kurikulum & SKS.</p>
-                <a href="#" class="btn btn-outline-warning btn-sm rounded-pill px-4 disabled">Kelola</a>
+                <a href="<?= BASEURL; ?>/matkul" class="btn btn-outline-warning btn-sm rounded-pill px-4">Kelola</a>
             </div>
         </div>
     </div>
