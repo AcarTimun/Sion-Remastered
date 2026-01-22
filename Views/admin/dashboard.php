@@ -11,41 +11,50 @@
 </div>
 
 <div class="row">
-    <div class="col-md-4 mb-4">
+    <div class="col-md-3 mb-4">
         <div class="card border-0 shadow-sm h-100 card-menu">
-            <div class="card-body text-center py-5">
-                <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+            <div class="card-body text-center py-4">
+                <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 50px; height: 50px;">
                     <i class="fas fa-chalkboard-teacher fa-lg"></i>
                 </div>
-                <h5 class="card-title text-primary fw-bold">Data Dosen</h5>
-                <p class="card-text text-muted small">Kelola data dosen pengajar & NIDN.</p>
-                <a href="<?= BASEURL; ?>/dosen" class="btn btn-outline-primary btn-sm rounded-pill px-4">Kelola</a>
+                <h6 class="fw-bold text-primary">Data Dosen</h6>
+                <a href="<?= BASEURL; ?>/dosen" class="btn btn-outline-primary btn-sm rounded-pill w-100 mt-2">Kelola</a>
             </div>
         </div>
     </div>
 
-    <div class="col-md-4 mb-4">
+    <div class="col-md-3 mb-4">
         <div class="card border-0 shadow-sm h-100 card-menu">
-            <div class="card-body text-center py-5">
-                <div class="bg-success text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+            <div class="card-body text-center py-4">
+                <div class="bg-success text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 50px; height: 50px;">
                     <i class="fas fa-user-graduate fa-lg"></i>
                 </div>
-                <h5 class="card-title text-success fw-bold">Data Mahasiswa</h5>
-                <p class="card-text text-muted small">Kelola data mahasiswa & Prodi.</p>
-                <a href="<?= BASEURL; ?>/mahasiswa" class="btn btn-outline-success btn-sm rounded-pill px-4">Kelola</a>
+                <h6 class="fw-bold text-success">Data Mahasiswa</h6>
+                <a href="<?= BASEURL; ?>/mahasiswa" class="btn btn-outline-success btn-sm rounded-pill w-100 mt-2">Kelola</a>
             </div>
         </div>
     </div>
 
-    <div class="col-md-4 mb-4">
+    <div class="col-md-3 mb-4">
         <div class="card border-0 shadow-sm h-100 card-menu">
-            <div class="card-body text-center py-5">
-                <div class="bg-warning text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+            <div class="card-body text-center py-4">
+                <div class="bg-warning text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 50px; height: 50px;">
                     <i class="fas fa-book fa-lg"></i>
                 </div>
-                <h5 class="card-title text-warning fw-bold">Mata Kuliah</h5>
-                <p class="card-text text-muted small">Kelola kurikulum & SKS.</p>
-                <a href="<?= BASEURL; ?>/matkul" class="btn btn-outline-warning btn-sm rounded-pill px-4">Kelola</a>
+                <h6 class="fw-bold text-warning">Mata Kuliah</h6>
+                <a href="<?= BASEURL; ?>/matkul" class="btn btn-outline-warning btn-sm rounded-pill w-100 mt-2">Kelola</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3 mb-4">
+        <div class="card border-0 shadow-sm h-100 card-menu">
+            <div class="card-body text-center py-4">
+                <div class="bg-info text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 50px; height: 50px;">
+                    <i class="fas fa-calendar-alt fa-lg"></i>
+                </div>
+                <h6 class="fw-bold text-info">Jadwal Kelas</h6>
+                <a href="<?= BASEURL; ?>/kelas" class="btn btn-outline-info btn-sm rounded-pill w-100 mt-2">Atur Jadwal</a>
             </div>
         </div>
     </div>
