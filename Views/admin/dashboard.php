@@ -32,7 +32,7 @@
                 </div>
                 <h5 class="card-title text-success fw-bold">Data Mahasiswa</h5>
                 <p class="card-text text-muted small">Kelola data mahasiswa & Prodi.</p>
-                <a href="#" class="btn btn-outline-success btn-sm rounded-pill px-4 disabled">Kelola</a>
+                <a href="<?= BASEURL; ?>/mahasiswa" class="btn btn-outline-success btn-sm rounded-pill px-4">Kelola</a>
             </div>
         </div>
     </div>

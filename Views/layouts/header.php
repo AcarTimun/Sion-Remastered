@@ -20,7 +20,9 @@
         $homeLink = BASEURL;
         if($_SESSION['user']['role'] == 'admin') $homeLink = BASEURL . '/admin';
         elseif($_SESSION['user']['role'] == 'dosen') $homeLink = BASEURL . '/portaldosen';
+        elseif($_SESSION['user']['role'] == 'mahasiswa') $homeLink = BASEURL . '/portalmahasiswa';
     ?>
+
     <a class="navbar-brand" href="<?= $homeLink; ?>"><i class="fas fa-university me-2"></i>SION REMASTERED</a>
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -39,6 +41,13 @@
         <?php if($_SESSION['user']['role'] == 'dosen') : ?>
             <li class="nav-item mx-2"><a class="nav-link text-white-50" href="#">Jadwal Ajar</a></li>
             <li class="nav-item mx-2"><a class="nav-link text-white-50" href="#">Perwalian</a></li>
+        <?php endif; ?>
+
+        <?php if($_SESSION['user']['role'] == 'mahasiswa') : ?>
+            <li class="nav-item mx-2"><a class="nav-link text-white-50" href="#">KRS</a></li>
+            <li class="nav-item mx-2"><a class="nav-link text-white-50" href="#">Jadwal</a></li>
+            <li class="nav-item mx-2"><a class="nav-link text-white-50" href="#">Nilai (KHS)</a></li>
+            <li class="nav-item mx-2"><a class="nav-link text-white-50" href="#">Keuangan</a></li>
         <?php endif; ?>
 
         <li class="nav-item ms-3">

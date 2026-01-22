@@ -49,9 +49,9 @@ class AuthController extends Controller {
                     // ARAH BARU: Masuk ke Portal Dosen
                     header('Location: ' . BASEURL . '/portaldosen');
                     exit;
-                } else {
-                    // Mahasiswa
-                    echo "Login Sukses! Dashboard Mahasiswa belum tersedia.";
+                } elseif ($user['role'] == 'mahasiswa') {
+                    // ARAH BARU: Masuk ke Portal Mahasiswa
+                    header('Location: ' . BASEURL . '/portalmahasiswa');
                     exit;
                 }
                 
