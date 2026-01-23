@@ -69,4 +69,38 @@ class PortalMahasiswaController extends Controller {
         $this->view('mahasiswa/khs/index', $data);
         $this->view('layouts/footer');
     }
+    		// Halaman Keuangan Mahasiswa
+    public function keuangan()
+    {
+        $data['judul'] = 'Keuangan Saya';
+        
+        // Ambil ID Mhs
+        $user_id = $_SESSION['user']['id'];
+        $db = new Database;
+        $db->query("SELECT mahasiswa_id FROM mahasiswa WHERE user_id = :uid");
+        $db->bind('uid', $user_id);
+        $mhs = $db->single();
+        
+        $data['tagihan'] = $this->model('Keuangan')->getTagihanByMahasiswa($mhs['mahasiswa_id']);
+
+        $this->view('layouts/header', $data);
+        $this->view('mahasiswa/keuangan/index', $data); // Kita buat file ini
+        $this->view('layouts/footer');
+    }
+
+    // Proses Upload Bukti
+    public function bayar()
+    {
+        // Cek apakah ada file yang diupload
+        if ($_FILES['bukti_pembayaran']['error'] === 4) {
+            echo "<script>alert('Pilih gambar bukti transfer dulu!'); window.history.back();</script>";
+            return false;
+        }
+
+        if( $this->model('Keuangan')->uploadBukti($_POST, $_FILES['bukti_pembayaran']) > 0 ) {
+            echo "<script>alert('Bukti berhasil diupload! Tunggu validasi Admin.'); window.location.href='" . BASEURL . "/portalmahasiswa/keuangan';</script>";
+        } else {
+            echo "<script>alert('Gagal upload.'); window.history.back();</script>";
+        }
+    }
 }
