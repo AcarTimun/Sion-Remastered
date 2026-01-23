@@ -83,12 +83,16 @@ CREATE TABLE pembayaran (
     FOREIGN KEY (tagihan_id) REFERENCES tagihan(tagihan_id) ON DELETE CASCADE
 );
 
--- 8. TABEL KRS (Kartu Rencana Studi)
--- Validasi Max 24 SKS akan dilakukan di Controller PHP
+-- 8. TABEL KRS 
 CREATE TABLE krs (
     krs_id INT AUTO_INCREMENT PRIMARY KEY,
     mahasiswa_id INT NOT NULL,
     kelas_id INT NOT NULL,
+    nilai_tugas DECIMAL(5,2) DEFAULT 0,
+    nilai_uts DECIMAL(5,2) DEFAULT 0,
+    nilai_uas DECIMAL(5,2) DEFAULT 0,
+    nilai_akhir DECIMAL(5,2) DEFAULT 0,
+    grade CHAR(2) DEFAULT '-',
     tanggal_ambil DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (mahasiswa_id) REFERENCES mahasiswa(mahasiswa_id) ON DELETE CASCADE,
     FOREIGN KEY (kelas_id) REFERENCES kelas(kelas_id) ON DELETE CASCADE

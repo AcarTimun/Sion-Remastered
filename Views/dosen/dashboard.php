@@ -32,7 +32,7 @@
                 </div>
                 <h5 class="card-title text-primary fw-bold">Input Nilai</h5>
                 <p class="card-text text-muted small">Input nilai UTS, UAS, dan Tugas.</p>
-                <a href="#" class="btn btn-outline-primary btn-sm rounded-pill px-4 disabled">Input Nilai</a>
+                <a href="<?= BASEURL; ?>/portaldosen/nilai" class="btn btn-outline-primary btn-sm rounded-pill px-4 disabled">Input Nilai</a>
             </div>
         </div>
     </div>

@@ -46,7 +46,7 @@
         <?php if($_SESSION['user']['role'] == 'mahasiswa') : ?>
             <li class="nav-item mx-2"><a class="nav-link text-white-50" href="<?= BASEURL; ?>/krs">KRS</a></li>
             <li class="nav-item mx-2"><a class="nav-link text-white-50" href="#">Jadwal</a></li>
-            <li class="nav-item mx-2"><a class="nav-link text-white-50" href="#">Nilai (KHS)</a></li>
+            <li class="nav-item mx-2"><a class="nav-link text-white-50" href="<?= BASEURL; ?>/portalmahasiswa/khs">Nilai (KHS)</a></li>
             <li class="nav-item mx-2"><a class="nav-link text-white-50" href="#">Keuangan</a></li>
         <?php endif; ?>
 

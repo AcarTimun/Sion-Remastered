@@ -42,7 +42,7 @@
                     <i class="fas fa-star fa-lg"></i>
                 </div>
                 <h6 class="fw-bold">Kartu Hasil Studi</h6>
-                <a href="#" class="btn btn-outline-warning btn-sm rounded-pill w-100 mt-2 disabled">Lihat Nilai</a>
+                <a href="<?= BASEURL; ?>/portalmahasiswa/khs" class="btn btn-outline-warning btn-sm rounded-pill w-100 mt-2 disabled">Lihat Nilai</a>
             </div>
         </div>
     </div>
