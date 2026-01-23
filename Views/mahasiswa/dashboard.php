@@ -18,7 +18,7 @@
                     <i class="fas fa-edit fa-lg"></i>
                 </div>
                 <h6 class="fw-bold">Isi KRS</h6>
-                <a href="#" class="btn btn-outline-primary btn-sm rounded-pill w-100 mt-2 disabled">Ambil Kelas</a>
+                <a href="<?= BASEURL; ?>/krs" class="btn btn-outline-primary btn-sm rounded-pill w-100 mt-2">Ambil Kelas</a>
             </div>
         </div>
     </div>
