@@ -83,4 +83,64 @@ class AuthController extends Controller {
         header('Location: ' . BASEURL . '/auth');
         exit;
     }
+
+    // 1. Tampilkan Form Ganti Password
+    public function change_password()
+    {
+        // Cek login
+        if (!isset($_SESSION['user'])) {
+            header('Location: ' . BASEURL . '/auth');
+            exit;
+        }
+
+        $data['judul'] = 'Ganti Password';
+        $this->view('layouts/header', $data);
+        $this->view('auth/change_password', $data); // Kita buat file ini
+        $this->view('layouts/footer');
+    }
+
+    // 2. Proses Ganti Password
+    public function update_password()
+    {
+        if (!isset($_SESSION['user'])) {
+            header('Location: ' . BASEURL . '/auth');
+            exit;
+        }
+
+        $userId = $_SESSION['user']['id'];
+        $oldPass = $_POST['old_password'];
+        $newPass = $_POST['new_password'];
+        $confirmPass = $_POST['confirm_password'];
+
+        // A. Validasi Input Kosong
+        if(empty($oldPass) || empty($newPass) || empty($confirmPass)) {
+            echo "<script>alert('Semua kolom wajib diisi!'); window.history.back();</script>";
+            return;
+        }
+
+        // B. Cek Password Baru vs Konfirmasi
+        if($newPass !== $confirmPass) {
+            echo "<script>alert('Password baru dan konfirmasi tidak cocok!'); window.history.back();</script>";
+            return;
+        }
+
+        // C. Ambil Data User dari DB (untuk dapat hash password lama)
+        $userModel = $this->model('User'); 
+        $currentUser = $userModel->getUserById($userId);
+
+        // D. Verifikasi Password Lama
+        if(!password_verify($oldPass, $currentUser['password'])) {
+            echo "<script>alert('Password lama salah!'); window.history.back();</script>";
+            return;
+        }
+
+        // E. Hash Password Baru & Simpan
+        $newHash = password_hash($newPass, PASSWORD_DEFAULT);
+        
+        if($userModel->updatePassword($userId, $newHash) > 0) {
+            echo "<script>alert('Password berhasil diubah! Silakan login ulang.'); window.location.href='" . BASEURL . "/auth/logout';</script>";
+        } else {
+            echo "<script>alert('Gagal mengubah password (atau password sama dengan sebelumnya).'); window.history.back();</script>";
+        }
+    }
 }

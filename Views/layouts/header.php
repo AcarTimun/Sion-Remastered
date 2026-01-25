@@ -50,16 +50,24 @@
             <li class="nav-item mx-2"><a class="nav-link text-white-50" href="#">Keuangan</a></li>
         <?php endif; ?>
 
-        <li class="nav-item ms-3">
-            <span class="text-white small me-2">
+        <li class="nav-item ms-3 dropdown">
+            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
                 Halo, <strong><?= $_SESSION['user']['username']; ?></strong> 
                 (<?= ucfirst($_SESSION['user']['role']); ?>)
-            </span>
-        </li>
-        <li class="nav-item">
-            <a class="btn btn-danger btn-sm rounded-pill px-3" href="<?= BASEURL; ?>/auth/logout">
-                <i class="fas fa-sign-out-alt me-1"></i>
             </a>
+            <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0">
+                <li>
+                    <a class="dropdown-item" href="<?= BASEURL; ?>/auth/change_password">
+                        <i class="fas fa-key me-2 text-warning"></i> Ganti Password
+                    </a>
+                </li>
+                <li><hr class="dropdown-divider"></li>
+                <li>
+                    <a class="dropdown-item text-danger" href="<?= BASEURL; ?>/auth/logout">
+                        <i class="fas fa-sign-out-alt me-2"></i> Logout
+                    </a>
+                </li>
+            </ul>
         </li>
 
       </ul>
