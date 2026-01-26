@@ -30,7 +30,7 @@
                     <i class="fas fa-calendar-alt fa-lg"></i>
                 </div>
                 <h6 class="fw-bold">Jadwal Kuliah</h6>
-                <a href="#" class="btn btn-outline-info btn-sm rounded-pill w-100 mt-2 disabled">Lihat Jadwal</a>
+                <a href="<?= BASEURL; ?>/krs" class="btn btn-outline-info btn-sm rounded-pill w-100 mt-2">Lihat Jadwal</a>
             </div>
         </div>
     </div>
@@ -42,7 +42,7 @@
                     <i class="fas fa-star fa-lg"></i>
                 </div>
                 <h6 class="fw-bold">Kartu Hasil Studi</h6>
-                <a href="<?= BASEURL; ?>/portalmahasiswa/khs" class="btn btn-outline-warning btn-sm rounded-pill w-100 mt-2 disabled">Lihat Nilai</a>
+                <a href="<?= BASEURL; ?>/portalmahasiswa/khs" class="btn btn-outline-warning btn-sm rounded-pill w-100 mt-2">Lihat Nilai</a>
             </div>
         </div>
     </div>
@@ -54,7 +54,7 @@
                     <i class="fas fa-wallet fa-lg"></i>
                 </div>
                 <h6 class="fw-bold">Keuangan</h6>
-                <a href="#" class="btn btn-outline-danger btn-sm rounded-pill w-100 mt-2 disabled">Cek Tagihan</a>
+                <a href="<?= BASEURL; ?>/portalmahasiswa/keuangan" class="btn btn-outline-danger btn-sm rounded-pill w-100 mt-2">Cek Tagihan</a>
             </div>
         </div>
     </div>
